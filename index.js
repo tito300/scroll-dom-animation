@@ -52,7 +52,6 @@ const animateSimple = (function() {
                         elementInstances = [...elementInstances, element];
                     } else {
                         elements.forEach((each, i) => {
-                            debugger;
                             if(elementIndex && !elementIndex.includes(i)) return;
                             let element = new Element(each, animationDirection, options)
                             elementInstances = [...elementInstances, element];
