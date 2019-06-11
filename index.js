@@ -41,23 +41,42 @@ const animateSimple = (function() {
             }
 
             function initializeAnimationPositions() {
-                elementsToAnimate.forEach(elementToAnimate => {
-                    const elementIndex = elementToAnimate[2].elementIndex || false;
-                    const elementSelector = Array.isArray(elementToAnimate) ?  elementToAnimate[0]: elementToAnimate;
-                    const animationDirection = Array.isArray(elementToAnimate) && elementToAnimate[1] ? elementToAnimate[1] : '';
-                    const options = elementToAnimate[2] || { speed: null, offset: null, inViewDistance, elementIndex };
-                    const elements = getNewElement(elementSelector);
-                    if(!elements.forEach) {
-                        let element = new Element(elements, animationDirection, options);
+                if(!(elementsToAnimate instanceof Array)) throw "argument must be of type array";
+
+                if(elementsToAnimate[0] instanceof Array) {
+                    // sample input: [[selector, direction, options], [...same]]
+                    elementsToAnimate.forEach(elementSelector => {
+                        _getElementInstances(elementSelector);
+                    })            
+                } else if(typeof elementsToAnimate[0] === 'string') {
+                    /** this is an optimized for when user provides selector as argument rather
+                    * than an array of selectors
+                    * sample input: ['.selector', direction, options]
+                    */                    
+                    _getElementInstances(elementsToAnimate);
+                } else {
+                    throw "argument must be of type array. Example 1: ['.selector', '->', options] \n Example 2: [['.selector', '->', options], [], []]"
+                }        
+            }
+
+            function _getElementInstances(elementSelectors) {
+                const elementIndex = elementSelectors[2] ? elementSelectors[2].elementIndex : false;
+                const elementSelector = elementSelectors[0];
+                const animationDirection = elementSelectors[1] ? elementSelectors[1] : '';
+                const options = elementSelectors[2] || { speed: null, offset: null, inViewDistance, elementIndex };
+                const elements = getNewElement(elementSelector);
+                // if(!elements || !elements.length) return console.error('no elements found matching selector: ', elementSelector, ' . Consider double checking selector spelling.');
+
+                if(!elements.forEach) {
+                    let element = new Element(elements, animationDirection, options);
+                    elementInstances = [...elementInstances, element];
+                } else {
+                    elements.forEach((each, i) => {
+                        if(elementIndex && !elementIndex.includes(i)) return;
+                        let element = new Element(each, animationDirection, options)
                         elementInstances = [...elementInstances, element];
-                    } else {
-                        elements.forEach((each, i) => {
-                            if(elementIndex && !elementIndex.includes(i)) return;
-                            let element = new Element(each, animationDirection, options)
-                            elementInstances = [...elementInstances, element];
-                        });
-                    }
-                })            
+                    });
+                }
             }
 
             function smoothScrollToAnchor(e) {
