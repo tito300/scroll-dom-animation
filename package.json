@@ -1,6 +1,6 @@
 {
   "name": "scroll-dom-animation",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Makes animating dom elements on scroll event super easy using a declarative approach without having to touch your css",
   "main": "index.js",
   "scripts": {

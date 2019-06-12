@@ -49,7 +49,8 @@ const animateSimple = (function() {
                         _getElementInstances(elementSelector);
                     })            
                 } else if(typeof elementsToAnimate[0] === 'string') {
-                    /** this is an optimized for when user provides selector as argument rather
+                    /** 
+                    * this is an optimized for when user provides selector as argument rather
                     * than an array of selectors
                     * sample input: ['.selector', direction, options]
                     */                    
@@ -65,16 +66,25 @@ const animateSimple = (function() {
                 const animationDirection = elementSelectors[1] ? elementSelectors[1] : '';
                 const options = elementSelectors[2] || { time: null, offset: null, inViewDistance, elementIndex };
                 const elements = getNewElement(elementSelector);
-                // if(!elements || !elements.length) return console.error('no elements found matching selector: ', elementSelector, ' . Consider double checking selector spelling.');
+                const directions = _getDirection(animationDirection);
 
                 if(!elements.forEach) {
-                    let element = new Element(elements, animationDirection, options);
-                    elementInstances = [...elementInstances, element];
+                    let instance = new Element(elements, animationDirection, options);
+                    elementInstances = [...elementInstances, instance];
                 } else {
+                    let bool = true;
                     elements.forEach((each, i) => {
                         if(elementIndex && !elementIndex.includes(i)) return;
-                        let element = new Element(each, animationDirection, options)
-                        elementInstances = [...elementInstances, element];
+                        let instance;
+
+                        if(Array.isArray(directions)) {
+                            let currentDirection = bool ? directions[0] : directions[1];
+                            bool = !bool;
+                            instance = new Element(each, currentDirection, options)
+                        } else {
+                            instance = new Element(each, animationDirection, options)
+                        }
+                        elementInstances = [...elementInstances, instance];
                     });
                 }
             }
@@ -87,6 +97,18 @@ const animateSimple = (function() {
                 const targetElement = document.getElementById(scrollToTarget);
                 targetElement.scrollIntoView({ behavior: "smooth", block: 'start' })
             }
+
+            function _getDirection(direction) {
+                if(direction.length === 4) {
+                    let result = [];
+                    result.push(direction.split('').splice(0, 2).join(''))
+                    result.push(direction.split('').splice(2, 4).join(''))
+                    return result;
+                } else {
+                    return direction;
+                }
+            }
+
             return {
                 handleScrollAnimation,
                 smoothScrollToAnchor,
