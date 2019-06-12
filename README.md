@@ -50,14 +50,17 @@ scrollDomAnimation.animate(['.class__name1', '<-', { time: 1, offset: 80 }]);
 
 **time** : sets transition time of the animation in seconds - default 0.3  
 **offset** : animation distance in pixels - default 50   
-**elementIndex** : if more than one element share the same selector, this defines which elements to apply animation to. 
+**inViewDistance**: the amount of pixels the element has to be in view before animating.
+**elementIndex** : if more than one element share the same selector, this defines which elements to apply animation to.
 
 ## Directions 
+NOTE: the opposit direction symbols below only work on selectors the return multiple elements.
+
 | symbol  |  discription                     |
 |---------|----------------------------------|
 | ->      | to right                         |
 | <-      | to left                          |
-| -><- OR <-->  | consecutive elements in the opposit direction |
+| -><- OR <-->  | consecutive elements in opposit direction |
 | ^       | upward                           |
 | v       | downward                         |
 | /^      | upward to right                  |
@@ -66,10 +69,17 @@ scrollDomAnimation.animate(['.class__name1', '<-', { time: 1, offset: 80 }]);
 | *       | fadein                           |
 | .o      | scaleup                          |
 | o.      | scaledown                        |
-| .oo.  OR  o..o   | consecutive elements in the opposit direction |
+| .oo.  OR  o..o   | consecutive elements in opposit direction |
 
 ## Smooth scroll
-to be documented
+```
+const projectBtn = document.querySelector('.project__btn');
 
-## package state
-this package is still under construction and should be finished in a few days.
+projectBtn.addEventListener('click', scrollDomAnimation.smoothScroll);
+```
+Following the same principle of applying animations without modifying original code, you only need to add this method as callback for the event listener.     
+Of course your element (in this case projectBtn) has to have an href attribute pointing to the target elemet's id.
+
+## Contribution
+
+You are welcome to contribute to this package. To add more animations please change the animations.js module and feel free to suggest more animations.

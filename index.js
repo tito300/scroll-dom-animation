@@ -92,7 +92,7 @@ const animateSimple = (function() {
             function smoothScrollToAnchor(e) {
                 e.preventDefault();
                 const scrollToTarget = getHrefTarget(e);
-                
+                if(!scrollToTarget) return console.error('href attribute on the element provided does not contain an anchor');
             
                 const targetElement = document.getElementById(scrollToTarget);
                 targetElement.scrollIntoView({ behavior: "smooth", block: 'start' })
