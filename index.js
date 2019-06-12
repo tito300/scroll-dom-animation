@@ -63,7 +63,7 @@ const animateSimple = (function() {
                 const elementIndex = elementSelectors[2] ? elementSelectors[2].elementIndex : false;
                 const elementSelector = elementSelectors[0];
                 const animationDirection = elementSelectors[1] ? elementSelectors[1] : '';
-                const options = elementSelectors[2] || { speed: null, offset: null, inViewDistance, elementIndex };
+                const options = elementSelectors[2] || { time: null, offset: null, inViewDistance, elementIndex };
                 const elements = getNewElement(elementSelector);
                 // if(!elements || !elements.length) return console.error('no elements found matching selector: ', elementSelector, ' . Consider double checking selector spelling.');
 
