@@ -16,7 +16,7 @@ This library allows you to animate your existing dom elements without having to 
 There are three benefits to this approach: 
   * you can use this library on an existing project without touching any css.
   * If the client's browser didn't load Js files for some reason, your application will display as intended. 
-  * If you decided to change animation libraries in the future, you can do that easily since your css in the same.
+  * easy to change library in the future since your own code will not be changed.
 
 
 ## Syntax
@@ -42,9 +42,9 @@ scrollDomAnimation.animate(elementsToAnimate);
 In addition to the selector and direction properties shown in the examples above, each selector array takes a 3rd options object (optional) to customize the animation of the corresponding element.
 
 ```
-                                                          options
-                                                             |
-                                                             v
+                                                         options
+                                                        |        |
+                                                        v        v
 scrollDomAnimation.animate(['.class__name1', '<-', { time: 1, offset: 80 }]);
 ```
 
@@ -57,15 +57,16 @@ scrollDomAnimation.animate(['.class__name1', '<-', { time: 1, offset: 80 }]);
 |---------|----------------------------------|
 | ->      | to right                         |
 | <-      | to left                          |
-| -><-    | either left or right (random)    |
+| -><- OR <-->  | consecutive elements in the opposit direction |
 | ^       | upward                           |
 | v       | downward                         |
 | /^      | upward to right                  |
 | v/      | downward to left                 |
+| v//^    | consecutive elements in the opposit direction                |
 | *       | fadein                           |
 | .o      | scaleup                          |
 | o.      | scaledown                        |
-| .oo.    | scale either up or down (random) |
+| .oo.  OR  o..o   | consecutive elements in the opposit direction |
 
 ## Smooth scroll
 to be documented
