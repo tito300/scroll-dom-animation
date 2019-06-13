@@ -104,6 +104,8 @@ const animateSimple = (function() {
                     result.push(direction.split('').splice(0, 2).join(''))
                     result.push(direction.split('').splice(2, 4).join(''))
                     return result;
+                } else if(direction === '^v' || direction === 'v^') {
+                    return ['^', 'v']
                 } else {
                     return direction;
                 }
