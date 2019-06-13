@@ -4,11 +4,11 @@ utalizing a declarative approach, this library makes animating dom elements on t
 ## sample
 
 ```
-                                  class name     animation direction
-                                        |               |
-                                        v               v
+                                    selector    animation direction
+                                        |          |
+                                        v          v
                                   
-  scrollDomAnimation.animate([ '.element__Selector',   '->',  options])
+  scrollDomAnimation.animate([ '.class__name',   '->',  options])
 ```
 ## content:
 ### [-live demo](#live-demo)
