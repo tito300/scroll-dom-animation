@@ -41,12 +41,9 @@ There are three benefits to this approach:
 #### 1. animating elements with one selector (classname, id, etc...):
 ```
 
-animate(elementToAnimate)
+animate([selector, direction, options])
 
 ```       
-where **elementToAnimate** is an array that looks like this:  
-```  [selector, direction, options] ```
-
 
 selector could be any css selector. Direction could be any symbol from the [direction table](#directions) below. [Options](#options) is an object that is used to adjust animation.
 
@@ -70,7 +67,7 @@ scrollDomAnimation.animate(elementsToAnimate);
 ```
 
 ## Directions 
-NOTE: the opposit direction symbols below only work on selectors that return multiple elements. In other word, elemets that share the same class/id name.
+NOTE: the opposit direction symbols below only work on selectors that return multiple elements. In other word, multiple elements that share the same class/id name will be animated in opposit direction consecutively.
 
 | symbol  |  discription                     |
 |---------|----------------------------------|
@@ -131,7 +128,7 @@ const projectBtn = document.querySelector('.project__btn');
 
 projectBtn.addEventListener('click', scrollDomAnimation.smoothScroll);
 ```
-Following the same principle of applying animations without modifying original code (whether CSS or HTML), this library provides you a method that you can use as a callback on the btn or link that contains the href of the target as shown in the code above. 
+This library provides you a method that you can use as a callback on the btn or link that contains the href of the target as shown in the code above. 
 
 Under the hood it uses scrollIntoView which is not supported by all browsers so make sure it works for you before using.
 
