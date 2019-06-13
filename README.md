@@ -1,15 +1,20 @@
 # scroll-dom-animation
 utalizing a declarative approach, this library makes animating dom elements on the scroll event super easy.
 
-## sample
+### sample
 
 ```
-                                    selector    animation direction
-                                        |          |
-                                        v          v
+                                  selector    animation direction
+                                      |           |
+                                      v           v
                                   
-  scrollDomAnimation.animate([ '.class__name',   '->',  options])
+  scrollDomAnimation.animate([ '.class__name',   '->'])
 ```
+### install
+```
+npm install scroll-dom-animation  
+```
+
 ## content:
 ### [-live demo](#live-demo)
 #### [-how it works](#how-it-works)
@@ -34,11 +39,13 @@ There are three benefits to this approach:
 #### 1. One element or multiple elements with the same class:
 ```
 
-animate(elementToAnimate[])
+animate(elementToAnimate)
 
 ```       
-where elementToAnimate is an array that looks like this:  
-`  [selector, direction, options]   `    
+where **elementToAnimate** is an array that looks like this:  
+`  [selector, direction, options]   `
+
+
 selector could be any css selector. Direction could be any symbol from the [direction table](#directions) below. [Options](#options) is an object that is used to adjust animation.
 
 #### 2. Multiple elements with different classes:
