@@ -10,7 +10,14 @@ utalizing a declarative approach, this library makes animating dom elements on t
                                   
   scrollDomAnimation.animate([ '.element__Selector',   '->',  options])
 ```
-#### [demo](#live-demo)
+## content:
+### [-live demo](#live-demo)
+#### [-how it works](#how-it-works)
+#### [-syntax](#syntax)
+#### [-directions](#directions)
+#### [-options](#options)
+#### [-smoothscroll](#smooth-scroll)
+
 
 
 ## How it works
@@ -53,22 +60,6 @@ const elementsToAnimate = [
 scrollDomAnimation.animate(elementsToAnimate);
 ```
 
-## options
-In addition to the selector and direction properties shown in the examples above, each selector array takes a 3rd options object (optional) to customize the animation of the corresponding element.
-
-```
-                                                         options
-                                                        |        |
-                                                        v        v
-scrollDomAnimation.animate(['.class__name1', '<-', { time: 1, offset: 80 }]);
-```
-
-**time** : sets transition time of the animation in seconds - default 0.3  
-**offset** : animation distance in pixels - default 50   
-**scaleFactor** : only works on scale animations such as '.o'. default - 'o.': 0.1 | '.o': 0.5  
-**inViewDistance**: the amount of pixels the element has to be in view before animating.  
-**elementIndex** : if more than one element share the same selector, this defines which elements to apply animation to.
-
 ## Directions 
 NOTE: the opposit direction symbols below only work on selectors that return multiple elements. In other word, elemets that share the same class/id name.
 
@@ -87,6 +78,22 @@ NOTE: the opposit direction symbols below only work on selectors that return mul
 | .o      | scaleup                          |
 | o.      | scaledown                        |
 | .oo.  OR  o..o   | consecutive elements in opposit direction |
+
+## options
+In addition to the selector and direction properties shown in the examples above, each selector array takes a 3rd options object (optional) to customize the animation of the corresponding element.
+
+```
+                                                         options
+                                                        |        |
+                                                        v        v
+scrollDomAnimation.animate(['.class__name1', '<-', { time: 1, offset: 80 }]);
+```
+
+**time** : sets transition time of the animation in seconds - default 0.3  
+**offset** : animation distance in pixels - default 50   
+**scaleFactor** : only works on scale animations such as '.o'. default - 'o.': 0.1 | '.o': 0.5  
+**inViewDistance**: the amount of pixels the element has to be in view before animating.  
+**elementIndex** : if more than one element share the same selector, this defines which elements to apply animation to.
 
 ## live demo
 
