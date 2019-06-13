@@ -28,7 +28,7 @@ npm install scroll-dom-animation
 ## Introduction
 While working on a project, I came up with this package to help me simplify and visualize my JS scroll animations in one spot without having to mess with css files and this is exactly what this library does (see [the code used for the demo](#live-demo) below). 
 
-when you style your elements you would place them in their intended final position (after animation) and our library takes care of animation. 
+when you style your elements in css you would place them in their intended final position (after animation) and then this library takes care of animating and returning the elements to that place. 
 
 There are three benefits to this approach: 
   * you can use this library on an existing project or on top of other libraries (e.g. bootstrap) without touching any css.
