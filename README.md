@@ -17,7 +17,7 @@ npm install scroll-dom-animation
 
 ## content:
 ### [-live demo](#live-demo)
-#### [-how it works](#how-it-works)
+#### [-introduction](#introduction)
 #### [-syntax](#syntax)
 #### [-directions](#directions)
 #### [-options](#options)
@@ -25,8 +25,10 @@ npm install scroll-dom-animation
 
 
 
-## How it works
-This library allows you to animate your existing dom elements without having to change any of the original css code which works very well with css libraries such as bootstrap. This also means when you style your elements you would place them in their intended final position (after animation) and our library takes care of animation. 
+## Introduction
+While working on a project, I came up with this package to help me simplify and visualize my JS scroll animations in one spot without having to mess with css files and this is exactly what this library does (see [the code used for the demo](#live-demo) below). 
+
+This library allows you to animate your existing dom elements all in one spot in a declarative visual way without having to change any of the original css code which works very well with css libraries such as bootstrap. This also means when you style your elements you would place them in their intended final position (after animation) and our library takes care of animation. 
 
 There are three benefits to this approach: 
   * you can use this library on an existing project or on top of other libraries without touching any css.
@@ -54,7 +56,7 @@ selector could be any css selector. Direction could be any symbol from the [dire
 animate(Array[elementToAnimate]) 
 
 ```  
-To animate multiple selectors you can provide multiple selectors in an array. Check the example below:
+To animate multiple selectors you can wrap them in an array and provide this array as an argument. Check the example below:
 
 #### Example
 ```
