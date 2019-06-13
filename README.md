@@ -10,7 +10,7 @@ utalizing a declarative approach, this library makes animating dom elements on t
                                   
   scrollDomAnimation.animate([ '.element__Selector',   '->',  options])
 ```
-### [demo](#demo)
+#### [demo](#live-demo)
 
 
 ## How it works
@@ -83,7 +83,7 @@ NOTE: the opposit direction symbols below only work on selectors the return mult
 | o.      | scaledown                        |
 | .oo.  OR  o..o   | consecutive elements in opposit direction |
 
-## demo
+## live demo
 
 ### [VIEW DEMO](https://tito300.github.io/portfolio/)
 All animations in the demo are done through this library using this exact code:
