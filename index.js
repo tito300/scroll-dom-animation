@@ -18,9 +18,9 @@ const scrollDomAnimation = (function() {
     scrollDomAnimation.animate = function(elementSelectors) {
         if(!elementSelectors instanceof Array) throw 'options must be of type array';
 
-        const { handleScrollAnimation, initializeAnimationPositions } = eventHandlers(inViewDistance);
+        const { handleScrollAnimation, initializeInstances } = eventHandlers(inViewDistance);
 
-        window.onload = initializeAnimationPositions(elementSelectors);
+        window.onload = initializeInstances(elementSelectors);
         window.onscroll = handleScrollAnimation;
     }
 
