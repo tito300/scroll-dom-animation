@@ -10,14 +10,35 @@ utalizing a declarative approach, this library makes animating dom elements on t
                                   
   scrollDomAnimation.animate([ '.element__Selector',   '->',  options])
 ```
+## [demo](https://tito300.github.io/portfolio/)
+
+All animations in the this demo are done through this library using this code:
+
+```
+const elementsToAnimate = [
+    ['.project__img', '-><-', { time: 0.4 }], 
+    ['.project__num', '-><-', { time: 0.5 }],
+    ['.projects__header', '^'],
+    ['#about .card', 'o.', {time: 0.4}],
+    ['#about .card-title', '.o', {scaleFactor: 0.5}],
+    ['#about .card-text', '*', {time: 0.8}],
+    ['#resume .card', '^'],
+    ['#resume .card-link', '->', { time: 0.7}],
+    ['#connect .btn', '^v', {time: 0.5, offset: 20},], 
+]
+
+scrollDom.animate(elementsToAnimate);
+```
+
 ## How it works
-This library allows you to animate your existing dom elements without having to change any of the original css code. Meaning when you style your elements you would place them in their intended final position (after animation) and our library takes care of animation. 
+This library allows you to animate your existing dom elements without having to change any of the original css code which works very well with css libraries such as bootstrap. This also means when you style your elements you would place them in their intended final position (after animation) and our library takes care of animation. 
 
 There are three benefits to this approach: 
   * you can use this library on an existing project without touching any css.
   * If the client's browser didn't load Js files for some reason, your application will display as intended. 
   * easy to change library in the future since your own code will not be changed.
 
+NOTE: don't use this library for element that will appear in the top view when page loads. Only use it for elements that will appear on scroll. This is because our library has to initiat position through JS before animating which will show if element is in view when loaded.
 
 ## Syntax
 ` animate(argument) `       
@@ -50,7 +71,7 @@ scrollDomAnimation.animate(['.class__name1', '<-', { time: 1, offset: 80 }]);
 
 **time** : sets transition time of the animation in seconds - default 0.3  
 **offset** : animation distance in pixels - default 50   
-**inViewDistance**: the amount of pixels the element has to be in view before animating.
+**inViewDistance**: the amount of pixels the element has to be in view before animating.  
 **elementIndex** : if more than one element share the same selector, this defines which elements to apply animation to.
 
 ## Directions 
@@ -63,9 +84,10 @@ NOTE: the opposit direction symbols below only work on selectors the return mult
 | -><- OR <-->  | consecutive elements in opposit direction |
 | ^       | upward                           |
 | v       | downward                         |
+| ^v OR v^ | consecutive elements in opposit direction      |
 | /^      | upward to right                  |
 | v/      | downward to left                 |
-| v//^    | consecutive elements in the opposit direction                |
+| v//^    | consecutive elements in the opposit direction   |
 | *       | fadein                           |
 | .o      | scaleup                          |
 | o.      | scaledown                        |
@@ -82,4 +104,4 @@ Of course your element (in this case projectBtn) has to have an href attribute p
 
 ## Contribution
 
-You are welcome to contribute to this package. To add more animations please change the animations.js module and feel free to suggest more animations.
+You are welcome to contribute to this package. To add more animations please checkout the /lib/animations.js module and feel free to suggest more animations.
