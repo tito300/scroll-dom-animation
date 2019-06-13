@@ -24,7 +24,7 @@ There are three benefits to this approach:
 > NOTE: don't use this library for element that will appear in the top view when page loads. Only use it for elements that will appear on scroll. This is because our library has to initiat position through JS before animating which will show if element is in view when loaded.
 
 ## Syntax
-##### One element or multiple elements with the same class:
+#### One element or multiple elements with the same class:
 ```
 
 animate(elementToAnimate[])
@@ -34,8 +34,12 @@ where elementToAnimate is an array that looks like this:
 `  [selector, direction, options]   `    
 selector could be any css selector. Direction could be any symbol from the [direction table](#directions) below. [Options](#options) is an object that is used to adjust animation.
 
-#####  Multiple elements with different classes:
-` animate(Array[elementToAnimate]) `  
+####  Multiple elements with different classes:
+```
+
+animate(Array[elementToAnimate]) 
+
+```  
 To animate multiple selectors you can provide multiple selectors in an array. Check the example below:
 
 ### Example
