@@ -1,12 +1,17 @@
-import utils from './lib/utils';
-import constants from './lib/constants';
-import eventHandlers from './lib/eventHandlers';
+import utils from './lib/utils.js';
+import constants from './lib/constants.js';
+import eventHandlers from './lib/eventHandlers.js';
 const { getHrefTarget, inView } = utils();
+
+/**
+ * @typedef {"^"|"v"|"->"|"<-"|".o"|"o."|".oo."|"o..o"|"*"|"-><-"|"<-->"|"^v"|"v^"|"/^"|"v/"|"v//^"} Directions
+ * @typedef {[string, Directions]} ElementSelector
+ */
 
 const scrollDomAnimation = (function() {
     let inViewDistance = constants.IN_VIEW;
     const scrollDomAnimation = {}
-
+    
     scrollDomAnimation.configure = function(options) {
         if(!options) return;
         if(!(options instanceof Object)) throw 'argument must be of type Object'
@@ -15,6 +20,10 @@ const scrollDomAnimation = (function() {
     }
 
     // TODO: add support for object arguments
+    /**
+     * 
+     * @param {ElementSelector[]} elementSelectors 
+     */
     scrollDomAnimation.animate = function(elementSelectors) {
         if(!elementSelectors instanceof Array) throw 'options must be of type array';
 

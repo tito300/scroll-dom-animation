@@ -2,9 +2,10 @@
   "name": "scroll-dom-animation",
   "version": "1.0.9",
   "description": "Makes animating dom elements on scroll event super easy using a declarative approach without having to touch your css",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "jest"
+    "start": "parcel .\\example\\index.html",
+    "build": "parcel build  index.js"
   },
   "homepage": "https://github.com/tito300/scroll-dom-animation.git",
   "keywords": [
