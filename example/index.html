@@ -5,16 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scroll DOM Animation</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .sample-container {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .sample {
+            width: 200px;
+            height: 150px;
+            padding: 10px;
+            margin: 0 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-6 first-el" style="height: 100vh; background-color: rgba(95, 158, 160, 0.562);">FIRST</div>
-            <div class="col-6 second-el"  style="height: 100vh; background-color: rgba(137, 43, 226, 0.5);">SECOND</div>
+        <div class="row" style="height: 100vh;">
+            <div class="col lead text-center mt-5">
+                Welcome
+            </div>
         </div>
         <div class="row">
-            <div class="col third-el" style="height: 100vh; background-color: blanchedalmond;">
-                THIRD
+            <div class="col-md-6 sample-container">
+                <div class="sample row-1-col-1" style="background-color: rgba(95, 158, 160, 0.562);">
+                    ROW 1 COL 1
+                </div>
+            </div>
+            <div class="col-md-6 sample-container">
+                <div class="sample row-1-col-2"  style="background-color: rgba(137, 43, 226, 0.5);">
+                    ROW 1 COL 2
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 sample-container">
+                <div class="row-2-col-1 sample" style="background-color: beige;">
+                    ROW 2 COL 1
+                </div>
+            </div>
+            <div class="col-md-6 sample-container">
+                <div class="row-2-col-2 sample" style="background-color: beige;">
+                    ROW 2 COL 2
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 sample-container">
+                <div class="sample row-4-col-1" style="background-color: rgba(95, 158, 160, 0.562);">
+                    ROW 4 COL 1
+                </div>
+            </div>
+            <div class="col-md-6 sample-container">
+                <div class="sample row-4-col-2"  style="background-color: rgba(137, 43, 226, 0.5);">
+                    ROW 4 COL 2
+                </div>
             </div>
         </div>
     </div>

@@ -5,14 +5,24 @@ const { getHrefTarget, inView } = utils();
 
 /**
  * @typedef {"^"|"v"|"->"|"<-"|".o"|"o."|".oo."|"o..o"|"*"|"-><-"|"<-->"|"^v"|"v^"|"/^"|"v/"|"v//^"} Directions
- * @typedef {[string, Directions]} ElementSelector
+ * @typedef {{inViewDistance?: number}} Options
+ * @typedef {[string, Directions, Options]} ElementSelector
  */
 
+ /**
+  * Factory Function
+  * @function
+  */
 const scrollDomAnimation = (function() {
     let inViewDistance = constants.IN_VIEW;
-    const scrollDomAnimation = {}
+    const _export = {}
     
-    scrollDomAnimation.configure = function(options) {
+    /**
+     * @public
+     * @param {{inViewDistance: number}} options 
+     * @returns {void}
+     */
+    _export.configure = function(options) {
         if(!options) return;
         if(!(options instanceof Object)) throw 'argument must be of type Object'
 
@@ -21,10 +31,12 @@ const scrollDomAnimation = (function() {
 
     // TODO: add support for object arguments
     /**
-     * 
+     * @public
      * @param {ElementSelector[]} elementSelectors 
+     * @returns {void}
      */
-    scrollDomAnimation.animate = function(elementSelectors) {
+    _export.animate = function(elementSelectors) {
+        // @ts-ignore
         if(!elementSelectors instanceof Array) throw 'options must be of type array';
 
         const { handleScrollAnimation, initializeInstances } = eventHandlers(inViewDistance);
@@ -34,10 +46,13 @@ const scrollDomAnimation = (function() {
     }
 
     /**
+     *  Helper util
      *  takes event object and scrolls smoothly to the href value of the target element
-     *  @param {Event} event takes the event object provided by the eventlistener 
+     *  @public
+     *  @param {Event} e takes the event object provided by the eventlistener 
+     *  @returns {void}
      *  */ 
-    scrollDomAnimation.smoothScroll = function (e) {
+    _export.smoothScroll = function (e) {
         e.preventDefault();
         const scrollToTarget = getHrefTarget(e);
             
@@ -46,7 +61,7 @@ const scrollDomAnimation = (function() {
         targetElement.scrollIntoView({ behavior: "smooth", block: 'start' })
     }
 
-    return scrollDomAnimation;
+    return _export;
 })()
 
 export default scrollDomAnimation;

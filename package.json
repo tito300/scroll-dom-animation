@@ -4,7 +4,7 @@
   "description": "Makes animating dom elements on scroll event super easy using a declarative approach without having to touch your css",
   "main": "dist/index.js",
   "scripts": {
-    "start": "parcel .\\example\\index.html",
+    "start": "parcel .\\example\\index.html --out-dir dev/",
     "build": "parcel build  index.js"
   },
   "homepage": "https://github.com/tito300/scroll-dom-animation.git",
