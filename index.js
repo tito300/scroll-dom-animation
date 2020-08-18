@@ -1,6 +1,6 @@
 import utils from './lib/utils.js';
 import constants from './lib/constants.js';
-import eventHandlers from './lib/eventHandlers.js';
+import EventHandlers from './lib/eventHandlers.js';
 const { getHrefTarget, inView } = utils();
 
 /**
@@ -39,7 +39,7 @@ const scrollDomAnimation = (function() {
         // @ts-ignore
         if(!elementSelectors instanceof Array) throw 'options must be of type array';
 
-        const { handleScrollAnimation, initializeInstances } = eventHandlers(inViewDistance);
+        const { handleScrollAnimation, initializeInstances } = EventHandlers(inViewDistance);
 
         window.onload = initializeInstances(elementSelectors);
         window.onscroll = handleScrollAnimation;
