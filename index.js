@@ -5,8 +5,9 @@ const { getHrefTarget, inView } = utils();
 
 /**
  * @typedef {"^"|"v"|"->"|"<-"|".o"|"o."|".oo."|"o..o"|"*"|"-><-"|"<-->"|"^v"|"v^"|"/^"|"v/"|"v//^"} Directions
- * @typedef {{inViewDistance?: number}} Options
- * @typedef {[string, Directions, Options]} ElementSelector
+ * @typedef {{inViewDistance?: number}} Configs
+ * @typedef {{offset?: number, scaleFactor?: number, time?: number, inViewDistance?: number}} AnimateOptions
+ * @typedef {[string, Directions, AnimateOptions]} ElementSelector
  */
 
  /**
@@ -19,7 +20,7 @@ const scrollDomAnimation = (function() {
     
     /**
      * @public
-     * @param {{inViewDistance: number}} options 
+     * @param {Configs} options 
      * @returns {void}
      */
     _export.configure = function(options) {
